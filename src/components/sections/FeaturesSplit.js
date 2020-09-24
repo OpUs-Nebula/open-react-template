@@ -125,7 +125,7 @@ const FeaturesSplit = ({
                   Repository
                   </h3>
                 <p className="m-0">
-                  Here is where you give your kernels access to any information they might need to to their job, but also specify where to tell you that they are done. The Dashboard is the only place they can do that currently, but emails, facebook messages and similar outlets can be added.
+                  Here is where you give your kernels access to any information they might need to do their job, but also specify where to tell you that they are done. The Dashboard is the only place they can do that currently but emails, facebook messages and similar outlets can be added.
                   </p>
               </div>
               <div className={
