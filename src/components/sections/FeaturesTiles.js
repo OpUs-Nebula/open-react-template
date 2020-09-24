@@ -44,8 +44,8 @@ const FeaturesTiles = ({
   );
 
   const sectionHeader = {
-    title: 'Why',
-    paragraph: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum — semper quis lectus nulla at volutpat diam ut venenatis.'
+    title: 'What',
+    paragraph: 'Conject is an App Store for AI. This summarizer is a web hosted version of one available in it, with plans for many more services in the future.'
   };
 
   return (

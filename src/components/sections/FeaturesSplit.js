@@ -51,7 +51,7 @@ const FeaturesSplit = ({
 
   const sectionHeader = {
     title: 'How',
-    paragraph: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum — semper quis lectus nulla at volutpat diam ut venenatis.'
+    paragraph: 'The AI technology behind the summarizer is delivered from Mphasis, one of the largest AI providers in the world. It will soon be replaced by an algorithm based on research out of Google.'
   };
 
   return (
