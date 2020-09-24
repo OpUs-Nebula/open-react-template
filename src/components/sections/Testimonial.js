@@ -45,7 +45,7 @@ const Testimonial = ({
 
   const sectionHeader = {
     title: 'Why',
-    paragraph: 'To make it easier for people to start using AI.'
+    paragraph: 'To make it easier for people to start using AI. Today, and in the future.'
   };
 
   return (
