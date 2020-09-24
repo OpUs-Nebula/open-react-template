@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { SectionTilesProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
@@ -22,18 +22,20 @@ const Testimonial = ({
   pushLeft,
   ...props
 }) => {
-  window.productHuntUpcoming = {
-  appId: 109973,
-  position: 'bottomLeft',
-  };
+  const scriptContents = () => {
+    window.productHuntUpcoming = {
+    appId: 109973,
+    position: 'bottomLeft',
+    };
 
-  (function(doc, scr, src, a, b) {
-    a = doc.createElement(scr);
-    b = doc.getElementsByTagName(scr)[0];
-    a.async = true;
-    a.src = src;
-    b.parentNode.insertBefore(a, b);
-  })(document, 'script', 'https://assets.producthunt.com/assets/upwigloader.js');
+    (function(doc, scr, src, a, b) {
+      a = doc.createElement(scr);
+      b = doc.getElementsByTagName(scr)[0];
+      a.async = true;
+      a.src = src;
+      b.parentNode.insertBefore(a, b);
+    })(document, 'script', 'https://assets.producthunt.com/assets/upwigloader.js');
+  }
   const outerClasses = classNames(
     'testimonial section',
     topOuterDivider && 'has-top-divider',
@@ -58,6 +60,8 @@ const Testimonial = ({
     title: 'Why',
     paragraph: 'To make it easier for people to start using AI. Today, and in the future.'
   };
+
+  useEffect(scriptContents);
 
   return (
     <section
