@@ -31,7 +31,7 @@ const FooterSocial = ({
           </a>
         </li>
         <li>
-          <a href="https://instagram/conject.ai">
+          <a href="https://instagram.com/conject.ai">
             <svg
               width="16"
               height="16"

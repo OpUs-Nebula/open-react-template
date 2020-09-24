@@ -45,7 +45,7 @@ const FeaturesTiles = ({
 
   const sectionHeader = {
     title: 'What',
-    paragraph: 'Conject is an App Store for AI. This summarizer is a web hosted version of one available in it, with plans for many more services in the future.'
+    paragraph: 'Conject is an App Store for AI. This summarizer is a web hosted version of a service available in it, with plans for many more services in the future.'
   };
 
   return (
