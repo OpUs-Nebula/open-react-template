@@ -22,7 +22,18 @@ const Testimonial = ({
   pushLeft,
   ...props
 }) => {
+  window.productHuntUpcoming = {
+  appId: 109973,
+  position: 'bottomLeft',
+  };
 
+  (function(doc, scr, src, a, b) {
+    a = doc.createElement(scr);
+    b = doc.getElementsByTagName(scr)[0];
+    a.async = true;
+    a.src = src;
+    b.parentNode.insertBefore(a, b);
+  })(document, 'script', 'https://assets.producthunt.com/assets/upwigloader.js');
   const outerClasses = classNames(
     'testimonial section',
     topOuterDivider && 'has-top-divider',
@@ -57,7 +68,6 @@ const Testimonial = ({
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
           <div className={tilesClasses}>
-
           </div>
         </div>
       </div>

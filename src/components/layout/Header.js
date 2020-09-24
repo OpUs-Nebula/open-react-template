@@ -52,6 +52,11 @@ const Header = ({
     setIsactive(true);
   }
 
+  const signUp = () =>{
+    closeMenu();
+    document.body.scrollIntoView(false);
+  }
+
   const closeMenu = () => {
     document.body.classList.remove('off-nav-is-active');
     nav.current && (nav.current.style.maxHeight = null);
@@ -111,16 +116,13 @@ const Header = ({
                       'list-reset text-xs',
                       navPosition && `header-nav-${navPosition}`
                     )}>
-                    <li>
-                      <Link to="#0" onClick={closeMenu}>Documentation</Link>
-                    </li>
                   </ul>
                   {!hideSignin &&
                     <ul
                       className="list-reset header-nav-right"
                     >
                       <li>
-                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sign up</Link>
+                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={signUp}>Sign up</Link>
                       </li>
                     </ul>}
                 </div>
