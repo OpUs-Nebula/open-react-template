@@ -53,7 +53,7 @@ const FeaturesTiles = ({
       {...props}
       className={outerClasses}
     >
-      <div className="container">
+      /*<div className="container">
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
           <div className={tilesClasses}>
@@ -192,7 +192,7 @@ const FeaturesTiles = ({
 
           </div>
         </div>
-      </div>
+      </div>*/
     </section>
   );
 }
