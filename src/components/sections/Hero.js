@@ -45,9 +45,21 @@ const Hero = ({
     screenState.textbox=event.target.value;
   }
 
-  const handleSubmit = (event) => {
+  const validateInput = (text) => {
+    return text
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    alert(screenState.textbox);
+    validateInput(screenState.textbox)
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain'},
+        body: JSON.stringify(screenState.textbox)
+    };
+    const response = await fetch('https://el5j0gd504.execute-api.us-east-1.amazonaws.com/DemoInferenceService', requestOptions);
+    const data = await response.json();
+    alert(data.results);
   }
 
   const outerClasses = classNames(
