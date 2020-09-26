@@ -49,17 +49,27 @@ const Hero = ({
     return text
   }
 
+  const validateOutput = (response) => {
+    return !(response == null || response.trim() === "")
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     validateInput(screenState.textbox)
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain'},
-        body: JSON.stringify(screenState.textbox)
+        body: screenState.textbox
     };
     const response = await fetch('https://el5j0gd504.execute-api.us-east-1.amazonaws.com/DemoInferenceService', requestOptions);
     const data = await response.json();
-    alert(data.results);
+    const result = data.results;
+    console.log(typeof(result))
+    if (validateOutput(result)) {
+      alert(result)
+    } else {
+      alert("Something about the text is confusing the summarizer. It can only understand chunks of text 512 words long, containing at least 3 sentences. If it contains more words than that, then put 3 or more spaces between each chunk.")
+    }
   }
 
   const outerClasses = classNames(
