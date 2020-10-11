@@ -52,21 +52,51 @@ const Hero = ({
   const validateOutput = (response) => {
     return !(response == null || response.trim() === "")
   }
+  
+  const paragraphMerging = (word_list) => {
+    const paragraph_size = 200; //Average size of paragraphs according to google
+    var i;
+    var paragraph_list = [];
+    for (i=0; i<word_list.length; i+=paragraph_size) {
+      paragraph_list.push(word_list.slice(i,i+paragraph_size).join(" "));
+    } 
+    return paragraph_list;
+  }
 
+  /*
+   Current flaws:
+   - Split method does not take into account newlines; Can cause large paragraphs to form.
+   - No notification on processing occuring.(Loading bar)
+   - Failure notification assumes that more than 1 paragraph is present.(or else req_list.length=out_list.length)
+
+  */
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    validateInput(screenState.textbox)
-    const requestOptions = {
+    event.preventDefault();
+    validateInput(screenState.textbox);
+    const word_list = screenState.textbox.split(" ");
+    const req_list = paragraphMerging(word_list);
+    console.log(req_list)
+    var out_list = [];
+    var result = "arbitrary";
+    var i;
+    for (i=0; i < req_list.length && validateOutput(result); i++) {
+      const paragraph = req_list[i];
+      const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain'},
-        body: screenState.textbox
-    };
-    const response = await fetch('https://el5j0gd504.execute-api.us-east-1.amazonaws.com/DemoInferenceService', requestOptions);
-    const data = await response.json();
-    const result = data.results;
-    console.log(typeof(result))
-    if (validateOutput(result)) {
-      alert(result)
+        body: paragraph
+      };
+      const response = await fetch('https://el5j0gd504.execute-api.us-east-1.amazonaws.com/DemoInferenceService', requestOptions);
+      const data = await response.json();
+      result = data.results;
+      console.log(typeof(result));
+      out_list.push(result);
+    }
+    var filtered_out = out_list.filter(function (el) {
+      return el != null;
+    });
+    if (req_list.length === filtered_out.length) {
+      alert(filtered_out.join(" "))
     } else {
       alert("Something about the text is confusing the summarizer. It can only understand chunks of text 512 words long, containing at least 3 sentences. If it contains more words than that, then put 3 or more spaces between each chunk.")
     }
