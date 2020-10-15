@@ -5,6 +5,7 @@ import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
 import Image from '../elements/Image';
 import Modal from '../elements/Modal';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 const propTypes = {
   ...SectionProps.types
@@ -63,6 +64,15 @@ const Hero = ({
     return paragraph_list;
   }
 
+  const [showProgress,setShowProgress] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [timeToFin, setTimeToFin] = useState(0);
+
+  const SummaryProgress = () => {
+    return <ProgressBar animated now={progress} />;
+  }
+
+
   /*
    Current flaws:
    - Split method does not take into account newlines; Can cause large paragraphs to form.
@@ -79,6 +89,8 @@ const Hero = ({
     var out_list = [];
     var result = "arbitrary";
     var i;
+    setTimeToFin(req_list.length*0.20)
+    setShowProgress(true)
     for (i=0; i < req_list.length && validateOutput(result); i++) {
       const paragraph = req_list[i];
       const requestOptions = {
@@ -91,6 +103,7 @@ const Hero = ({
       result = data.results;
       console.log(typeof(result));
       out_list.push(result);
+      setProgress(((i+1)/req_list.length)*100);
     }
     var filtered_out = out_list.filter(function (el) {
       return el != null;
@@ -100,8 +113,10 @@ const Hero = ({
     } else {
       alert("Something about the text is confusing the summarizer. It can only understand chunks of text 512 words long, containing at least 3 sentences. If it contains more words than that, then put 3 or more spaces between each chunk.")
     }
+    setShowProgress(false);
+    setTimeToFin(0);
+    setProgress(0);
   }
-
   const outerClasses = classNames(
     'hero section center-content',
     topOuterDivider && 'has-top-divider',
@@ -128,6 +143,7 @@ const Hero = ({
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
               CONJECT
             </h1>
+          { showProgress ? <div>Duration: ~{timeToFin} minutes<SummaryProgress /></div> : null }
           </div>
           <div className="hero-figure reveal-from-bottom illustration-element-01" data-reveal-value="20px" data-reveal-delay="800">
           </div>
