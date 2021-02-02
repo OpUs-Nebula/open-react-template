@@ -51,7 +51,7 @@ const FeaturesSplit = ({
 
   const sectionHeader = {
     title: 'How',
-    paragraph: 'The technology behind the summarizer is based on very recent breakthroughs in natural language processing, specifically transformer style neural networks and transfer learning'
+    paragraph: 'The technology behind the summarizer is based on very recent breakthroughs in natural language processing such as transformer style neural networks and transfer learning.'
   };
 
   return (
