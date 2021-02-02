@@ -51,7 +51,7 @@ const FeaturesSplit = ({
 
   const sectionHeader = {
     title: 'How',
-    paragraph: 'The AI technology behind the summarizer is delivered from Mphasis, one of the largest AI providers in the world. It will soon be replaced by an algorithm based on research out of Google.'
+    paragraph: 'The technology behind the summarizer is based on very recent breakthroughs in natural language processing, specifically transformer style neural networks and transfer learning'
   };
 
   return (
