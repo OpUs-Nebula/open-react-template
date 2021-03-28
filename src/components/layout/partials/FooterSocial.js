@@ -18,7 +18,7 @@ const FooterSocial = ({
     >
       <ul className="list-reset">
         <li>
-          <a href="https://facebook.com/conjectai">
+          <a href="https://facebook.com/hyperlogicai">
             <svg
               width="16"
               height="16"
@@ -31,7 +31,7 @@ const FooterSocial = ({
           </a>
         </li>
         <li>
-          <a href="https://instagram.com/conject.ai">
+          <a href="https://instagram.com/hyperlogic.ai">
             <svg
               width="16"
               height="16"
